@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Day 2</title>
+    <script>
+
+        // tes
+        let qtybaranga = 2
+        let pricea = 10000
+        let diskona = 10
+
+        let qtybarangb = 4
+        let priceb = 25000
+        let diskonb = 0
+
+        let subtotala = qtybaranga * (pricea - (pricea * diskona / 100))
+        let subtotalb = qtybarangb * (priceb - (priceb * diskonb / 100))
+        let subtotal = subtotala + subtotalb
+        console.log(subtotal);
+
+        function hitunghargatotaldiskon(qty, harga, diskon) {
+            let hargaakhir = qty * harga * (1 - diskon / 100);
+            return hargaakhir;
+        }
+
+        let total = hitunghargatotaldiskon(qtybaranga, pricea, diskona) + hitunghargatotaldiskon(qtybarangb, priceb, diskonb)
+
+        console.log(
+            new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(
+                total,
+            ),
+        );
+
+        document.write(new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(
+            total,
+        ),
+        )
+
+        const namaSupplier = "PT. Gondang Dia";
+        /**
+         * Hitung barang A
+         * */
+        let quantityBarangA = 2;
+        let priceBarangA = 10000;
+        let diskonBarangA = 10 / 100;
+        let hargaBarangAAfterDiskon = priceBarangA * diskonBarangA;
+        let subtotalBarangA = quantityBarangA * (priceBarangA - hargaBarangAAfterDiskon);
+
+        /**
+         * Hitung barang B
+         * */
+        let quantityBarangB = 4;
+        let priceBarangB = 25000;
+        let diskonBarangB = 0;
+        let hargaBarangBAfterDiskon = priceBarangB * diskonBarangB;
+        let subtotalBarangB = quantityBarangB * (priceBarangB - hargaBarangBAfterDiskon);
+
+        let totalx = new Intl.NumberFormat(
+            'id-ID',
+            { style: 'currency', currency: 'IDR' }
+        ).format(subtotalBarangA + subtotalBarangB);
+
+        let a = new Intl.NumberFormat(
+            'id-ID',
+            { style: 'currency', currency: 'IDR' }
+        ).format(subtotalBarangA);
+
+        let b = new Intl.NumberFormat(
+            'id-ID',
+            { style: 'currency', currency: 'IDR' }
+        ).format(subtotalBarangB);
+
+        console.log("Subtotal A = ", a);
+        console.log("Subtotal B = ", b);
+        console.log("Total = ", total);
+
+        let trible = 20
+        trible /= 2
+        console.log("ini tribel", trible)
+
+
+        //property adalah attribute dan method 
+
+        let text = "Hello WoRld!    ";
+        let result = text.slice(0, 5);
+        console.log("ini adalah slice string dari ", text, "=", result)
+
+        console.log(text.trim())
+
+        console.log(text.toLowerCase().includes("world"))
+
+
+        let antrian = 243
+        console.log("ANT" + antrian.toString().padStart(8, "0"))
+
+        console.log("asdasd\na\tasd")
+
+        let nama = "Nama";
+        console.log(`Hello ${nama} `) //harus pke backtick dengan  ` `
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

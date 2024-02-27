@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        //alert("Ini day 1 mern 20....")
+        //alert(400+500)// 400+500 literal number 
+        //arimatics 
+        let a = 50;
+        let b = 20;
+        b += a
+        let tambah = a + b
+        let kurang = a - b
+        let kali = a * b
+        let bagi = a / b
+        //pemdas
+        let temp = (a + b) / (b - a)
+        let big = 222222222222222222222222n//bigint
+        //floating
+        let c = 10 / 4
+        //binding in javascript
+        a = 80
+        //console.log(a)
+
+        let age;
+        //console.log(age)
+        age = 20
+        //console.log(age)
+
+
+
+        // tes
+        let qtybaranga = 2
+        let pricea = 10000
+        let diskona = 10
+
+        let qtybarangb = 4
+        let priceb = 25000
+        let diskonb = 0
+
+
+        let subtotala = qtybaranga * (pricea - (pricea * diskona / 100))
+        let subtotalb = qtybarangb * (priceb - (priceb * diskonb / 100))
+        let subtotal = subtotala + subtotalb
+        console.log(subtotal);
+
+        function hitunghargatotaldiskon(qty, harga, diskon) {
+            let hargaakhir = qty * harga * (1 - diskon / 100 );
+            return hargaakhir;
+        }
+
+        let total = hitunghargatotaldiskon(qtybaranga, pricea, diskona) + hitunghargatotaldiskon(qtybarangb, priceb, diskonb) 
+        console.log("dengan function",total);
+
+
+
+        //bedanya let dan var
+
+        const x = 10
+        //let x =20
+        // var z= 20
+        // var z=30
+        //bisa terjadi dclare yang berulang dan mengakibatkan perbedaan value
+
+        function ubah (){
+            x = 7
+            console.log("ubah", x)
+        }
+        ubah()
+        console.log(x)
+    </script>
+
+    <title>Day 1</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
