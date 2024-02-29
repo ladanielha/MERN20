@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Day 3</title>
+    <script>
+
+        function z(e) {
+            console.log(e)
+        }
+    </script>
+
+</head>
+
+<body>
+    <p>Nama Tugas</p>
+    <input id="txtTugas" type="text" />
+    <button id="btnTambah" >Tambah</button>
+
+    <ul id="daftarTugas">
+    
+    </ul>
+
+</body>
+<script>
+
+    // asd 
+    let a1 = 302
+    console.log(5 + "5");
+    console.log(5 + "asdasd");
+
+
+    let a = [1, 2, 3, 4, 5, 6]
+    console.log(a)
+    console.log(a.length)
+
+    a[5] = 2
+    console.log(a)
+
+    let b = [[2, 3, 4, 5], [3, 3, 4, 5], [3, 3, 3, 4], [6, 7, 9, 8]]
+    console.log(b)
+
+    let kata = ["roti", "beras", "nasi", "gabah"]
+    //kata.pop()
+    console.log(kata.pop())
+    console.log("ini barisan kata terakhir", kata.pop())
+    console.log("ini barisan kata awal", kata.shift())
+    console.log(kata)
+    let list = ["foo", "bar"];
+    kata.splice(1, 0, "baz", "qux");
+    list.splice(1, 0, "baz", "qux");
+    console.log("ini kta list", list, "ini kata", kata)
+
+    //format lama
+    list.map(function (value) { return value + "kuda" })
+
+    //
+    let material = ["angin", "tanah", "air", "api"]
+    let material2 = ["kayu", "besi"]
+    console.log(material.map((material) => material.length))
+
+    let sambungsatu = material.concat(material2)
+    console.log(sambungsatu)
+
+    let sambungkata = [...material, ...material2]
+    console.log(sambungkata)
+
+    // push, pop , shift , spilce , indexOf
+
+    let task = []
+        
+        let txtTugas = document.querySelector("#txtTugas")
+        let btnTambah = document.querySelector("#btnTambah");
+        let daftarTugas = document.querySelector("#daftarTugas");
+       
+        setInterval(() => {
+            let lis = document.querySelectorAll("li");
+            for (let li of lis) {
+                li.addEventListener("click", (e) => {
+                    let index = task.indexOf(e.target.dataset.nama)
+                    if (index > -1) {
+                        task.splice(index, 1);
+                        console.log("data ke splice")
+                    }
+                    refresh()
+                })
+            }
+        }, 100)
+        
+
+
+        btnTambah.addEventListener("click", () => {
+            let nilaiTxtTugas = txtTugas.value;
+            task.push(nilaiTxtTugas);
+            refresh()
+        })
+
+        function refresh() {
+            daftarTugas.innerHTML = "";
+            task.map((value) => {
+                daftarTugas.innerHTML += `<li data-nama='${value}'>${value}</li>`
+            })
+        }
+
+
+</script>
+
+</html>
