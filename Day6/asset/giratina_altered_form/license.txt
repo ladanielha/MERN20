@@ -1,0 +1,11 @@
+Model Information:
+* title:	Giratina (Altered Form)
+* source:	https://sketchfab.com/3d-models/giratina-altered-form-8c1decd7c1cb4ddbb62acbc00ba6937b
+* author:	Master Galanodel (https://sketchfab.com/Master_Galanodel)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Giratina (Altered Form)" (https://sketchfab.com/3d-models/giratina-altered-form-8c1decd7c1cb4ddbb62acbc00ba6937b) by Master Galanodel (https://sketchfab.com/Master_Galanodel) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

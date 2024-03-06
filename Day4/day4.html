@@ -5,105 +5,185 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Day 3</title>
-    <script>
-
-        function z(e) {
-            console.log(e)
-        }
-    </script>
+    <title>Day4</title>
 
 </head>
 
 <body>
-    <p>Nama Tugas</p>
-    <input id="txtTugas" type="text" />
-    <button id="btnTambah" >Tambah</button>
+    <p id="attacker">asd
 
-    <ul id="daftarTugas">
-    
-    </ul>
+
+    </p>
+
+    <p id="defender">
+        player 1
+
+    </p>
+
+    <p id="remis">
+        player 2
+
+    </p>
 
 </body>
 <script>
+    let goblin = {
+        name: "Goblin",
+        blood: 100,
+        "mana": 32,
+        category: "Mage",
+        skin: {},
+        damage: 20,
+        items: [
+            {
+                id: 23,
+                name: "mspd",
+                desc: "mspd",
+                mspd: 10
+            },
+            {
+                id: 2,
+                name: "aspd",
+                desc: "aspd",
+                aspd: 300
 
-    // asd 
-    let a1 = 302
-    console.log(5 + "5");
-    console.log(5 + "asdasd");
-
-
-    let a = [1, 2, 3, 4, 5, 6]
-    console.log(a)
-    console.log(a.length)
-
-    a[5] = 2
-    console.log(a)
-
-    let b = [[2, 3, 4, 5], [3, 3, 4, 5], [3, 3, 3, 4], [6, 7, 9, 8]]
-    console.log(b)
-
-    let kata = ["roti", "beras", "nasi", "gabah"]
-    //kata.pop()
-    console.log(kata.pop())
-    console.log("ini barisan kata terakhir", kata.pop())
-    console.log("ini barisan kata awal", kata.shift())
-    console.log(kata)
-    let list = ["foo", "bar"];
-    kata.splice(1, 0, "baz", "qux");
-    list.splice(1, 0, "baz", "qux");
-    console.log("ini kta list", list, "ini kata", kata)
-
-    //format lama
-    list.map(function (value) { return value + "kuda" })
-
-    //
-    let material = ["angin", "tanah", "air", "api"]
-    let material2 = ["kayu", "besi"]
-    console.log(material.map((material) => material.length))
-
-    let sambungsatu = material.concat(material2)
-    console.log(sambungsatu)
-
-    let sambungkata = [...material, ...material2]
-    console.log(sambungkata)
-
-    // push, pop , shift , spilce , indexOf
-
-    let task = []
-        
-        let txtTugas = document.querySelector("#txtTugas")
-        let btnTambah = document.querySelector("#btnTambah");
-        let daftarTugas = document.querySelector("#daftarTugas");
-       
-        setInterval(() => {
-            let lis = document.querySelectorAll("li");
-            for (let li of lis) {
-                li.addEventListener("click", (e) => {
-                    let index = task.indexOf(e.target.dataset.nama)
-                    if (index > -1) {
-                        task.splice(index, 1);
-                        console.log("data ke splice")
-                    }
-                    refresh()
-                })
             }
-        }, 100)
+        ],
+
+        attack: function (enemy) {
+            console.log(`${this.name} attack kamu `)
+            enemy.blood = enemy.blood - this.damage
+        },
+
+        stun: function (enemy) {
+            console.log(`${this.name} ngestun kamu`)
+            enemy.items[1].mspd = enemy.items[1].mspd - 10
+        },
+
+        liveStatus: function () {
+            console.log(`Hero Hp :  ${this.name} `)
+        }
+
+    }
+
+    let human = {
+        name: "Human",
+        blood: 100,
+        "mana": 32,
+        category: "Mage",
+        skin: {},
+        damage: 30,
+        items: [
+            {
+                id: 23,
+                name: "mspd",
+                desc: "mspd",
+                mspd: 100
+            },
+            {
+                id: 2,
+                name: "aspd",
+                desc: "aspd",
+                aspd: 300
+
+            }
+        ],
+
+        attack: function () {
+            console.log(`Hero${this.name} attack`)
+        },
+
+        liveStatus: function () {
+            console.log(`Your Hp :  ${this.blood} `)
+            console.log(`Your Hp :  ${this.items.mspd} `)
+
+        }
+
+    }
+
+    // goblin.attack(human)
+    // goblin.stun(human)
+    // human.liveStatus()
+
+    console.log("Coba permainan ")
+
+    let txtAttacker = document.querySelector("#attacker");
+    let txtDefender = document.querySelector("#defender");
+    let txtRemis = document.querySelector("#remis")
+
+
+    let objHero = {
+        name: "",
+        blood: 100,
+        category: "",
+        damage: 0,
+        attack: function (enemy) {
+            console.log(`Hero ${this.name} nyerang ${enemy.name}`)
+            enemy.blood -= this.damage;
+        },
+        stun: function (enemy) {
+            console.log(`${this.name} ngestun kamu`)
+            enemy.items[1].mspd = enemy.items[1].mspd - 10
+        },
+
+        liveStatus: function () {
+            console.log(`-----------------------`)
+            console.log(`HP Hero ${this.name} tersisa ${this.blood}`)
+            console.log(`-----------------------`)
+
+        }
+    }
+
+    let nana = Object.assign({}, objHero);
+    nana.name = "Nana";
+    nana.category = "Mage";
+    nana.damage = 1;
+
+    let Jonshon = { ...objHero }
+    Jonshon.name = "Jonshon";
+    Jonshon.category = "Tank";
+    Jonshon.damage = 3;
+
+    let rooms = [nana, Jonshon];
+
+    function getRandomHero(max) {
+        return Math.floor(Math.random() * max);
+    }
+
+    let interval = setInterval(function () {
+        let indexHeroAttacker = getRandomHero(rooms.length)
+        let indexHeroDefender = getRandomHero(rooms.length);
+
         
 
+        if (indexHeroAttacker !== indexHeroDefender) {
+            let attacker = rooms[indexHeroAttacker];
+            let defender = rooms[indexHeroDefender]
 
-        btnTambah.addEventListener("click", () => {
-            let nilaiTxtTugas = txtTugas.value;
-            task.push(nilaiTxtTugas);
-            refresh()
-        })
+            if(defender.blood <=0){
+                clearInterval(interval)
+            }
+            
+            attacker.attack(defender);
+            defender.liveStatus()
 
-        function refresh() {
-            daftarTugas.innerHTML = "";
-            task.map((value) => {
-                daftarTugas.innerHTML += `<li data-nama='${value}'>${value}</li>`
-            })
+            txtRemis.innerHTML = "Game on"
+            txtAttacker.innerHTML = `Attacker: ${attacker.name} ${attacker.blood}% `;
+            txtDefender.innerHTML = `Defender: ${defender.name} ${defender.blood}% `;
+
         }
+        else {
+            txtRemis.innerHTML = "Game remis"
+        }
+
+
+
+    }, 10)
+
+
+
+
+
 
 
 </script>

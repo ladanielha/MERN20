@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.0.0/dist/aframe-extras.min.js"></script>
+    <script
+        src="https://unpkg.com/aframe-environment-component@1.3.3/dist/aframe-environment-component.min.js"></script>
+</head>
+
+<body>
+    <a-scene environment="preset: volcano">
+        <a-assets>
+            <!-- Assets -->
+            <a-asset-item id="manequeen" src="./asset/lightning_mcqueen/scene.gltf"></a-asset-item>
+            <a-asset-item id="groudon" src="./asset/groudon/scene.gltf"></a-asset-item>
+        </a-assets>
+
+        <!-- Lightning McQueen -->
+        <a-entity id="mcqueenEntity" gltf-model="#manequeen" animation-mixer="clip: mcqueen_slowdrive"
+            scale="0.5 0.5 0.5" position="-1 0 -3" rotation="0 0 0">
+        </a-entity>
+
+        <!-- Groudon -->
+        <a-entity id="garudonEntity" gltf-model="#groudon" animation-smixer="clip: groudon_walk" scale="0.5 0.5 0.5" position="2 0 -7"
+            rotation="0 0 0"></a-entity>
+
+    </a-scene>
+
+    <script>
+
+        //mcqueen turn 
+        let mcqueenEntity = document.querySelector('#mcqueenEntity');
+        let turnRotation = 10;
+
+        function setCarTurn(event) {
+            if (event.key === "ArrowLeft") {
+                turnRotation -= 10; 
+                mcqueenEntity.setAttribute('rotation', `0 ${turnRotation} 0`);
+            }
+            if (event.key === "ArrowRight") {
+                turnRotation += 10; 
+                mcqueenEntity.setAttribute('rotation', `0 ${turnRotation} 0`);
+            }
+        }
+        window.addEventListener('keydown', setCarTurn);
+
+        // Garudon jump
+        let garudon = document.querySelector('#garudon');
+        let jumpSpace = 10;
+
+        function setHeroJump(event) {
+            if (event.key === " ") {
+                jumpSpace += 20; 
+                mcqueenEntity.setAttribute('rotation', `0 0 ${jumpSpace} `);
+            }
+        }
+
+        window.addEventListener('keydown', setHeroJump);
+    </script>
+</body>
+
+</html>
