@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sad</title>
+</head>
+
+<body>
+    <header>
+
+
+    </header>
+
+    <form class="search-form" autocomplete="off">
+        <input class="search-input" id="query-input" type="text" name="query" />
+        <button class="search-button" type="submit" role="button">Search</button>
+    </form>
+    <h3 class="search-query">You Queried: <span id="query-output" class="query"></span></h3>
+    
+    <button onclick="getLocation()">Coba cari lokasi saya </button>
+
+    <p id="demo"></p>
+</body>
+<script>
+    var counter = 0
+    setInterval(() => {
+        counter++;
+        document.title = `ini jumlah ${counter}`
+    }, 200000)
+
+
+
+    const x = document.getElementById("demo");
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+
+    function showPosition(position) {
+        x.innerHTML = "Latitude: " + position.coords.latitude +
+            "<br>Longitude: " + position.coords.longitude;
+    }
+
+
+    //document.title =" hei"
+</script>
+
+</html>
