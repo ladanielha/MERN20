@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asycn & Promise</title>
+</head>
+<body>
+  
+</body>
+<script>
+  
+
+const hitungTotal = (harga, diskon, qty) => {
+    return new Promise((resolve, reject) => {
+      if (typeof harga !== 'number' || typeof diskon !== 'number' || typeof qty !== 'number') {
+        reject(new Error('Input harus berupa angka'));
+      }
+  
+        const hargaSetelahDiskon = harga - (harga * (diskon / 100));
+        console.log(hargaSetelahDiskon);
+        const total = hargaSetelahDiskon * qty;
+        console.log(total);
+      resolve(total);
+    });
+}
+
+async function hitungTotalAsync(harga, diskon, qty) {
+    try {
+      //panggil fungsi hitung diskon dengan promise
+        const total = await hitungTotal(harga, diskon, qty);
+        console.log("Sedang memanggil fungsi hitung...")
+      return total;
+    } 
+    catch (error) {
+      console.error('Terjadi kesalahan:', error.message);
+    }
+}
+
+// Set Variabel 
+let harga = 189000000;
+let diskon = 14;
+let qty = 4;
+
+//Panggil fungsi hitung total
+hitungTotalAsync(harga, diskon, qty)
+  .then(total => {
+    //cetak harga dan ubah format menjadi IDR 
+    const totalHarga = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(total);
+    console.log(`Total harga setelah diskon: ${totalHarga}`);
+  })
+  .catch(error => {
+    console.error(error);
+  });
+  
+</script>
+</html>

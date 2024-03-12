@@ -18,3 +18,4 @@ const Ford = new Sport("Ford");
 document.querySelector("h1").innerText = Ford.tampil()
 console.log(Ford.tampil())
 console.log(Ford.tujuan())
+console.log("----------------------------------------------")
