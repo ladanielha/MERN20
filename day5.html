@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Day5</title>
+
+</head>
+
+<body>
+    <p>Kondisi</p>
+    <input type="number" id="txtCondition">
+
+    <button id="btnFilter">Filter</button>
+    <h3>dataawal</h3>
+    <pre id="txtPopulation"></pre>
+    <h3>filter</h3>
+    <pre id="txtHasil"></pre>
+
+
+
+</body>
+<script>
+    // let kendaraan = {
+    //     kec : 50,
+    //     kategori:'mobil',
+    //     jam : 8 ,
+    //     hari : "selasa",
+    //     nomer: {
+    //         nik: "33042343242320001",
+    //         nama: "an",
+    //     },
+    //     records:[],
+    //     bank:{
+    //         saldo: 500000
+    //     }
+
+    // }
+
+    // let operasi = ['senin','selasa','rabu','kamis','jumat']
+    // let ruelsDenda = {
+    //     mobil : 200000,
+    //     motor : 120000
+    // }
+
+    // if(kendaraan.jam > 7 && kendaraan.jam < 16 && kendaraan.kec >25 && operasi.includes(kendaraan.hari) ){
+    //     console.log('kena tilang')
+
+    //     let [mobil,motor] = Object.keys(ruelsDenda)
+
+    //     if (kendaraan.kategori === mobil){
+    //         kendaraan.bank.saldo = kendaraan.bank.saldo - ruelsDenda[mobil]
+    //         kendaraan.records.push({
+    //             potongan: ruelsDenda[mobil],
+    //             sisaSaldo: kendaraan.bank.saldo
+    //         })
+    //     }
+    //     else if (kendaraan.kategori === motor){
+    //         kendaraan.bank.saldo = kendaraan.bank.saldo - ruelsDenda[mobil]
+    //         kendaraan.records.push({
+    //             potongan: ruelsDenda[mobil],
+    //             sisaSaldo: kendaraan.bank.saldo
+    //         })
+    //     }
+    // }
+    // else{
+    //     console.log('aman')
+    // }
+    
+    // console.log(kendaraan)
+    // console.log("----------------------------------s")
+
+
+
+    
+    // let arr = ["A","B","C","D"];
+    //     for (let i = 0; i < arr.length ; i++) {
+    //         console.log(arr[i])
+    //     }
+
+    // for (let item of arr){
+    //     console.log(item)
+
+    // }
+    
+    // for (let index in arr){
+    //     console.log(index)
+    // }
+
+    //console.log("oooooooooooooo")
+    let populations = [
+        {
+            wilayah: "c",
+            jumlah:1_000_000,
+        },
+        {
+            wilayah: "z",
+            jumlah:900_000,
+        },
+        {
+            wilayah: "x",
+            jumlah:1_200_000,
+        },
+        {
+            wilayah: "v",
+            jumlah:1_100_000,
+        },
+        {
+            wilayah: "v",
+            jumlah:300_000,
+        },
+    ]
+
+    let txtPopulation = document.querySelector('#txtPopulation')
+    let txtCondition = document.querySelector('#txtCondition')
+    let btnFilter = document.querySelector('#btnFilter')
+    let txtHasil = document.querySelector('#txtHasil')
+    
+    txtPopulation.innerHTML = JSON.stringify(populations,null,2)
+    let populationA = []
+
+    for (let data of populations){
+        if(data.jumlah <= 1_000_000){
+            populationA.push(
+                data
+            )
+        }
+    }
+    //console.log("Wilayah dengan kurang dan sama dengan 1 juta  = ", populationA)
+
+    //console.log(populationb)
+    btnFilter.addEventListener("click",() => {
+        let conditionNumber  = parseInt(txtCondition.value)
+        let populationb = populations.filter((item)=>item.jumlah <= conditionNumber)
+        console.log(typeof txtCondition.value)
+        txtHasil.innerHTML = JSON.stringify(populationb,null,2)
+    })
+</script>
+
+
+</html>
