@@ -1,0 +1,11 @@
+401 Unuthorized
+402 Must pay first
+403 Forbidden
+404 Not Found
+500 Server error
+
+pesan yg ditampilkan
+{details: meesege}
+
+400
+pesan yg ditampilkan 
